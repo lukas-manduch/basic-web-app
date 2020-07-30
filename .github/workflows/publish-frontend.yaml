@@ -19,11 +19,19 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+    - uses: 
 
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
         node-version: 12.18.3
     - name: Run npm build
-      run: cd frontend
-      run: npm run build
+      run: |
+        cd frontend
+        npm run build
+    - name: Push to azure
+        uses: azure/CLI@v1
+        with:
+          azcliversion: 2.9.1
+          inlineScript: |
+          az storage blob sync -s ./build/ -c '$web' --connection-string ${{ secrets.STORAGE_KEY1 }}
