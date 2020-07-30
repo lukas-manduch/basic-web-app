@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Publish new api
 
 # Controls when the action will run. Triggers the workflow on push or pull request
@@ -35,7 +33,7 @@ jobs:
         # Path to package or folder. *.zip or a folder to deploy
         package: api/
         # Publish profile (*.publishsettings) file contents with web deploy secrets
-        publish-profile: secrets.FUNCTION_PROFILE
+        publish-profile: ${{ secrets.FUNCTION_PROFILE }}
         
 
   #   - name: Azure CLI Action
