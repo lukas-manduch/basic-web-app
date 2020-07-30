@@ -30,7 +30,7 @@ jobs:
         cd frontend
         npm run build
     - name: Push to azure
-        uses: azure/CLI@v1
+      uses: azure/CLI@v1
         with:
           azcliversion: 2.9.1
           inlineScript: |
