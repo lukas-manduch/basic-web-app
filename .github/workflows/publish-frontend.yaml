@@ -29,9 +29,13 @@ jobs:
         cd frontend
         npm install
         npm run build
+    - name: Print directory
+      run: |
+        pwd
+        ls -laZ        
     - name: Push to azure
       uses: azure/CLI@v1
       with:
         azcliversion: 2.9.1
         inlineScript: |
-          az storage blob sync -s ./build/ -c '$web' --connection-string "${{secrets.STORAGE_KEY1}}"
+          az storage blob sync -s $GITHUB_WORKSPACE/frontend/build/ -c '$web' --connection-string "${{secrets.STORAGE_KEY1}}"
