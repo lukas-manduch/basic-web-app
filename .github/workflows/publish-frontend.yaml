@@ -27,6 +27,7 @@ jobs:
     - name: Run npm build
       run: |
         cd frontend
+        npm install
         npm run build
     - name: Push to azure
       uses: azure/CLI@v1
